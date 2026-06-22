@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bet365 · 知识库指引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f8fb;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1b2a34;
+            line-height: 1.6;
+            padding: 2rem 1.25rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 网格卡片 + 蓝绿色点缀 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2.8rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0b4b5e;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header h1::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 4px;
+            background: #3fa7b3;
+            margin: 0.6rem auto 0;
+            border-radius: 4px;
+        }
+
+        .page-header p {
+            color: #3e5b67;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 核心网格 —— 知识库目录感 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.6rem;
+            margin: 2.8rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 6px 16px rgba(20, 65, 75, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            border: 1px solid rgba(63, 167, 179, 0.12);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(20, 75, 85, 0.08);
+            border-color: #3fa7b380;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: #3fa7b3;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0e4455;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p {
+            color: #2e4a58;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .card a {
+            color: #1d7c8a;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted #3fa7b3;
+            transition: border 0.2s;
+        }
+
+        .card a:hover {
+            border-bottom: 1px solid #0b4b5e;
+            color: #0b4b5e;
+        }
+
+        /* 说明区 + 提示区 上下结构 */
+        .info-section {
+            background: #e6f2f5;
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            margin: 2.4rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .info-block {
+            flex: 2;
+            min-width: 220px;
+        }
+
+        .info-block h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #05424f;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-block h2::before {
+            content: '📘';
+            font-size: 1.4rem;
+        }
+
+        .info-block p {
+            color: #1c3f4c;
+            margin-bottom: 0.8rem;
+        }
+
+        .tip-block {
+            flex: 1.5;
+            background: #ffffffd9;
+            padding: 1.2rem 1.6rem;
+            border-radius: 20px;
+            border-left: 5px solid #3fa7b3;
+            min-width: 180px;
+        }
+
+        .tip-block h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0b4b5e;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tip-block h2::before {
+            content: '💡';
+            font-size: 1.2rem;
+        }
+
+        .tip-block p {
+            color: #1e4351;
+            font-size: 0.95rem;
+        }
+
+        .tip-block a {
+            color: #1d7c8a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #3fa7b3;
+        }
+
+        /* 相关信息区 (FAQ 摘要) */
+        .related-section {
+            margin: 2.6rem 0 2rem;
+        }
+
+        .related-section h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #05424f;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .related-section h2::before {
+            content: '📌';
+            font-size: 1.3rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.1rem 1.3rem;
+            border: 1px solid #d9e8ed;
+            transition: background 0.15s;
+        }
+
+        .faq-item:hover {
+            background: #f1f9fc;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: #05424f;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #325560;
+        }
+
+        .faq-item a {
+            color: #1d7c8a;
+            text-decoration: underline dotted;
+        }
+
+        /* 底部简洁 */
+        .page-footer {
+            border-top: 1px solid #cde0e6;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            color: #4d6b78;
+            font-size: 0.9rem;
+        }
+
+        .page-footer a {
+            color: #1d7c8a;
+            text-decoration: none;
+            font-weight: 450;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.4rem 0.9rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.7rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .info-section {
+                flex-direction: column;
+                padding: 1.4rem;
+                gap: 1.2rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tip-block {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 820px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>bet365 · 知识库</h1>
+        <p>入口即目录，收藏即回响。再次访问的路径与持续关注的脉络，都藏在你习惯的位置。</p>
+    </header>
+
+    <!-- 网格卡片：目录感布局 -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">📖</div>
+            <h3>平台概览</h3>
+            <p>从界面到功能，理解 <a href="https://mains-bet365.com">bet365</a> 的基础框架与内容分布。适合新访客建立初次印象。</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🧭</div>
+            <h3>导航与收藏</h3>
+            <p>重新访问时，浏览器书签比记忆更可靠。建议将常用路径收藏，并定期回顾更新。</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>常见路径</h3>
+            <p>多数使用者会集中在几个核心模块。了解这些区域有助于减少每次查找的步骤。</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔁</div>
+            <h3>持续关注</h3>
+            <p>信息流与通知区是保持同步的方式之一。偶尔查看公告也能捕捉调整动向。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 -->
+    <div class="info-section">
+        <div class="info-block">
+            <h2>再次访问的节奏</h2>
+            <p>每次重新打开 <a href="https://mains-bet365.com">bet365</a>，界面也许会有细微调整，但核心入口通常保持稳定。对于经常使用的区域，记住大致位置比每次都从头浏览更高效。</p>
+            <p>如果间隔一段时间没有访问，主页的引导卡片和顶部导航依然是可靠的起点。一些用户习惯在浏览器新建标签页时直接输入域名，反而比通过搜索更快。</p>
+        </div>
+        <div class="tip-block">
+            <h2>收藏小提醒</h2>
+            <p>将 <strong>bet365</strong> 添加到书签栏后，每隔几周可以检查一次链接是否依然有效。如果页面结构发生明显变化，更新书签能节省后续访问的时间。</p>
+            <p>也可以利用浏览器的「阅读列表」功能暂存感兴趣的内容页，方便稍后细读。</p>
+        </div>
+    </div>
+
+    <!-- 相关信息区 (FAQ 摘要风格) -->
+    <section class="related-section">
+        <h2>你可能也会好奇</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <strong>为什么每次都看到几乎相同的界面？</strong>
+                <p>对于成熟的平台，频繁改版并不常见。熟悉当前布局反而能提高操作效率。如果某天发生变化，通常会有提示或更新日志。</p>
+            </div>
+            <div class="faq-item">
+                <strong>收藏的页面偶尔打不开怎么办？</strong>
+                <p>服务器维护或网络波动都可能导致暂时无法连接。稍等片刻再试，或检查一下 <a href="https://mains-bet365.com">bet365</a> 是否可访问。</p>
+            </div>
+            <div class="faq-item">
+                <strong>需要注册才能浏览所有内容吗？</strong>
+                <p>部分信息对访客开放，而另一些功能需要登录才能使用。建议先浏览公开区域，再决定是否注册。</p>
+            </div>
+            <div class="faq-item">
+                <strong>怎样了解最新变化？</strong>
+                <p>关注站内公告栏或帮助中心，那里通常汇总了近期的调整与说明。第三方讨论区也可作为参考，但以官方信息为准。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <p>保持关注 · 有序访问 · <a href="https://mains-bet365.com">bet365</a> 知识库持续收纳中</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">基于持续观察整理 · 内容仅供参考</p>
+    </footer>
+
+</body>
+</html>
