@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+  <title>世界杯 · 简明观赛指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #eef6f3;
+      color: #1c2f2e;
+      line-height: 1.7;
+      padding: 0 1rem 3rem;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header / Hero */
+    .hero {
+      background: linear-gradient(145deg, #0b3b3a 0%, #1c5c5a 60%, #2b7a77 100%);
+      border-radius: 0 0 3rem 3rem;
+      padding: 3.5rem 2rem 3rem;
+      margin: 0 -1rem 2.5rem;
+      text-align: center;
+      color: #f1fcfb;
+      box-shadow: 0 8px 24px rgba(10, 50, 45, 0.18);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "⚽";
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1.2rem;
+      font-size: 3.2rem;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0.5rem auto 0;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.2rem;
+      margin-top: 1.8rem;
+    }
+
+    .badge-grid span {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(1px);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #d6f0ed;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+      margin: 2.4rem 0 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.8rem 1.5rem 1.6rem;
+      box-shadow: 0 4px 16px rgba(25, 60, 55, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid rgba(70, 145, 135, 0.14);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(25, 70, 60, 0.12);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #0b4b47;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3 i {
+      font-style: normal;
+      background: #cae8e3;
+      border-radius: 30px;
+      padding: 0 0.6rem;
+      font-size: 0.9rem;
+      color: #09504b;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #254442;
+      margin-top: 0.3rem;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 0.8rem;
+      font-size: 0.94rem;
+    }
+
+    .card ul li {
+      padding: 0.2rem 0 0.2rem 1.4rem;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "•";
+      color: #2b8a81;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* 介绍段落 */
+    .intro-section {
+      background: white;
+      border-radius: 2.2rem;
+      padding: 2rem 2rem 2.2rem;
+      margin: 2.2rem 0;
+      box-shadow: 0 4px 20px rgba(20, 60, 55, 0.06);
+      border-left: 5px solid #359990;
+    }
+
+    .intro-section h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #0c4441;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.01em;
+    }
+
+    .intro-section p {
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .intro-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-link {
+      color: #0b6e66;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 2px solid #6dc6bb;
+      transition: border-color 0.2s, background 0.15s;
+    }
+
+    .highlight-link:hover {
+      border-bottom-color: #1f8f84;
+      background: #def0ec;
+    }
+
+    .faq-mini {
+      background: #f4faf8;
+      border-radius: 2rem;
+      padding: 1.4rem 1.8rem 1.4rem;
+      margin: 2rem 0 1.8rem;
+      border: 1px solid #b8dbd3;
+    }
+
+    .faq-mini h4 {
+      font-weight: 500;
+      color: #16534e;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-mini p {
+      font-size: 0.96rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-mini p strong {
+      color: #0b524c;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      padding: 1.8rem 0 0.2rem;
+      border-top: 1px solid #b7d5ce;
+      font-size: 0.95rem;
+      color: #2f5954;
+    }
+
+    .footer-note a {
+      color: #0d625a;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dashed #7ebbb2;
+    }
+
+    .footer-note a:hover {
+      border-bottom-style: solid;
+      background: #d1ece5;
+    }
+
+    .dot-divider {
+      margin: 0 0.3rem;
+      opacity: 0.4;
+    }
+
+    .mobile-pull {
+      margin-top: 0.8rem;
+      font-size: 0.92rem;
+    }
+
+    .small-meta {
+      display: inline-block;
+      background: #c8e4de;
+      border-radius: 20px;
+      padding: 0.2rem 1rem;
+      font-size: 0.78rem;
+      color: #11524b;
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero -->
+  <header class="hero">
+    <h1>世界杯 · 简明观赛指南</h1>
+    <p>从赛程梳理到观赛准备，一篇带你找到自己的节奏</p>
+    <div class="badge-grid">
+      <span>📅 2026 日程概览</span>
+      <span>📺 多平台提示</span>
+      <span>🌍 球迷备忘</span>
+      <span>⚡ 快速参考</span>
+    </div>
+  </header>
+
+  <!-- 卡片网格：三个自然角度 -->
+  <div class="card-grid">
+    <div class="card">
+      <h3>📌 赛程与阶段 <i>简明</i></h3>
+      <p>小组赛、淘汰赛节奏紧凑——提前了解分区与时间，不错过关键较量和自己支持队伍的出场窗口。</p>
+      <ul>
+        <li>48 支球队，16 个小组</li>
+        <li>淘汰赛单场决胜</li>
+        <li>决赛日锁定周末</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🖥️ 观赛场景 <i>灵活</i></h3>
+      <p>无论在家、通勤还是聚会，选用合适的设备与平台能让体验更顺畅。提前测试信号与网络，减少临时焦虑。</p>
+      <ul>
+        <li>大屏与移动端互补</li>
+        <li>音频解说作为备选</li>
+        <li>留意官方转播信息</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🌿 球迷贴士 <i>友好</i></h3>
+      <p>时差与作息可以提前规划——备好零食、设置提醒、与好友共享看球时间，让每一场都更尽兴。</p>
+      <ul>
+        <li>利用日历订阅赛程</li>
+        <li>选择回放或集锦</li>
+        <li>注意赛事版权提示</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🔍 信息筛选 <i>高效</i></h3>
+      <p>网络上的资讯纷杂，锁定可靠来源能帮你节省精力。官方新闻、数据网站与社区讨论各有侧重。</p>
+      <ul>
+        <li>区分预测与事实</li>
+        <li>关注球队大名单公布</li>
+        <li>留意场地与时区</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 三段自然介绍 + 背景说明 -->
+  <section class="intro-section">
+    <h2>从一次观赛计划说起</h2>
+    <p>很多人对 <strong>世界杯</strong> 的期待，不仅在于冠军归属，也在于那些和朋友一起熬夜、分享进球的瞬间。赛事临近前，与其被动等待，不如花几分钟梳理一下自己关注的队伍、比赛时间和可能的观看方式。一份简单的备忘，能让热情延续得更从容。</p>
+    <p>赛事主办方通常会提前公布详细的赛程表与版权信息。如果你希望一站式浏览赛程与相关动态，可以访问 <a href="https://hometv-fifa2026.com" class="highlight-link">世界杯</a> 专题页面，那里聚合了基础的赛事背景与观看参考，适合作为出发前的信息锚点。页面内容保持更新，对于初次关注的朋友比较友好。</p>
+    <p>另外，许多球迷习惯在社交平台关注即时讨论，但也别忘了提前确认网络环境与设备兼容性——尤其是移动端观看时，不同平台对直播流的支持略有差异。一个小小的准备，能避免关键时刻卡在加载画面。</p>
+  </section>
+
+  <!-- FAQ 摘要式提醒 -->
+  <div class="faq-mini">
+    <h4>❓ 短问短答 · 观赛前可以留意的几点</h4>
+    <p><strong>1. 如何快速找到官方赛程？</strong> 大多数体育媒体和赛事官网都会提供可下载的赛程表，建议以主办方发布为准。</p>
+    <p><strong>2. 直播平台需要提前注册吗？</strong> 部分平台需要免费注册或验证设备，建议开赛前三天完成测试。</p>
+    <p><strong>3. 时差明显该怎么规划？</strong> 可将重点比赛标记为提醒，选择看重播或精华集锦也是不少球迷的习惯。</p>
+    <p><strong>4. 有没有一站式聚合页？</strong> 一些站点会整理实用链接与背景介绍，比如 <a href="https://hometv-fifa2026.com" class="highlight-link">世界杯</a> 专题页，内容偏重参考与指引，适合快速浏览。</p>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <footer class="footer-note">
+    <div>📋 保持轻松 · 享受比赛 · 理性观赛</div>
+    <div style="margin: 0.6rem 0 0.2rem;">
+      更多背景与动态，可前往 
+      <a href="https://hometv-fifa2026.com">世界杯</a> 
+      <span class="dot-divider">·</span> 
+      信息仅供参考，请以官方发布为准
+    </div>
+    <div class="mobile-pull small-meta">⚽ 2026 赛事前瞻 · 非官方聚合指引页</div>
+  </footer>
+
+</div>
+</body>
+</html>
